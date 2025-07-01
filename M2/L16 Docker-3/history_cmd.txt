@@ -1,0 +1,91 @@
+ 1906  docker network create mynet
+ 1907  docker run --name myredis --network mynet redis
+ 1908  docker run -d --name myredis --network host redis
+ 1909  docker run -d --name my_fastapi --network mynet myfastapi:1.4
+ 1910  docker ps
+ 1911  docker stop c89c4478353e
+ 1912  docker rm c89c4478353e
+ 1913  docker stop 0328205d68fc
+ 1914  docker rm 0328205d68fc
+ 1915  docker network ls
+ 1916  docker network create mynet2
+ 1917  docker network ls
+ 1918  docker network create mynet2
+ 1919  docker network create --driver bridge mynet3
+ 1920  docker network ls
+ 1921  docker network inspect mynet
+ 1922  docker network ls
+ 1923  docker run -it --rm --name my_linux --network mynet3 alpine sh
+ 1924  docker run -it --rm --name my_linux2 --network mynet3 alpine sh
+ 1925  docker ps
+ 1926  pwd
+ 1927  cd ./M2/L16\ Docker-3/
+ 1928  pwd
+ 1929  docker volume ls
+ 1930  docker volume inspect pgdata_temp
+ 1931  docker ps
+ 1932  docker stop aa3d274034d9
+ 1933  docker rm aa3d274034d9
+ 1934  docker ls
+ 1935  docker network ls
+ 1936  docker network inspect mynet3
+ 1937  cd ./M2/L15\ Docker-2/
+ 1938  docker build -t fatsapi-demo .
+ 1939  docker run -d --name bravo --network mynet2 --expose 8000 fatsapi-demo
+ 1940  docker ps
+ 1941  ping alpha
+ 1942  docker ps
+ 1943  docker stop bc9fb122cb6a
+ 1944  docker stop f316ef8f82dd
+ 1945  docker stop 5432bf8392ca
+ 1946  docker rm 5432bf8392ca
+ 1947  docker rm f316ef8f82dd
+ 1948  docker rmbc9fb122cb6a
+ 1949  docker rm bc9fb122cb6a
+ 1950  docker network ls
+ 1951  docker network rm mynet
+ 1952  docker network ls
+ 1953  docker network rm mynet2
+ 1954  docker network rm mynet3
+ 1955  docker network ls
+ 1956  docker run -it --name tembox alpine sh
+ 1957  docker ps
+ 1958  docker ps -a
+ 1959  docker start tembox
+ 1960  docker ps
+ 1961  docker rm tembox
+ 1962  docker stop tembox
+ 1963  docker rm tembox
+ 1964  docker run -it --name tembox alpine sh
+ 1965  cd /var/lib/docker/volumes
+ 1966  cd /var/lib/docker/volumes/
+ 1967  docker run -d --name db -v pgdata:/var/lib/postgresql/data postgres:17
+ 1968  cd ../L16\ Docker-3/
+ 1969  docker run -d --name fatsapi_cont -v /home/stanislav/PycharmProjects/JavaRush_PyW/M2/L16\ Docker-3 -w /app fatsapi-demo
+ 1970  docker ps
+ 1971  docker run -d --name fatsapi_cont1 -v /home/stanislav/PycharmProjects/JavaRush_PyW/M2/L16\ Docker-3 -w /app python:3.11-slim uvicorn app:app --host 0.0.0.0 --port 8000
+ 1972  docker ps
+ 1973  docker volume ls
+ 1974  docker volume create pgdata_temp
+ 1975  docker volume ls
+ 1976  docker volume inspect pgdata_temp
+ 1977  docker volume create pgdata_temp
+ 1978  docker volume ls
+ 1979  docker volume inspect pgdata_temp
+ 1980  docker volume rm pgdata_temp
+ 1981  docker volume ls
+ 1982  docker volume create pgdata_temp
+ 1983  docker volume ls
+ 1984  docker run -d --name my_pg  -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=mydb -v pgdata_temp:/var/lib/postgresql/data -p 5432:5432 postgres:17
+ 1985  docker run -d --name my_pg1  -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=mydb -v pgdata_temp:/var/lib/postgresql/data -p 5431:5432 postgres:17
+ 1986  docker ps
+ 1987  docker stop 6a12d8a95c23
+ 1988  docker rm 6a12d8a95c23
+ 1989  docker run -d --name my_pg1  -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=mydb -v pgdata_temp:/var/lib/postgresql/data -p 5431:5432 postgres:17
+ 1990  docker rm -f my_pg1
+ 1991  docker ps
+ 1992  docker run -it -rm --name alpha --network mynet2 alpine sh
+ 1993  docker run -it --rm --name alpha --network mynet2 alpine sh
+ 1994  docker images
+ 1995  docker ps
+ 1996  docker stop e51077a9d7aa
