@@ -1,0 +1,38 @@
+ 1978  docker --version
+ 1979  docker compose version
+ 1980  docker-compose --version
+ 1981  docker images
+ 1982  cd ./M2/L17\ Docker\ compose/step-2-app/
+ 1983  docker compose up
+ 1984  docker ps
+ 1985  docker ps -a
+ 1986  docker images
+ 1987  docker compose up
+ 1988  docker compose down
+ 1989  docker ps -a
+ 1990  docker images
+ 1991  docker compose up -d
+ 1992  docker compose ps
+ 1993  docker compose ps -a
+ 1994  docker compose logs
+ 1995  docker compose restart
+ 1996  docker compose logs
+ 1997  docker compose restart app
+ 1998  docker compose logs
+ 1999  docker compose dowm
+ 2000  docker compose down
+ 2001  cd ./M2/L17\ Docker\ compose/step-3-fastapi/
+ 2002  docker compose up -d
+ 2003  docker compose up
+ 2004  docker compose ps
+ 2005  docker compose up -d
+ 2006  docker compose logs
+ 2007  docker compose down
+ 2008  docker compose up -d
+ 2009  docker compose config
+ 2010  docker compose down
+ 2011  docker compose up -d
+ 2012  docker compose ps
+ 2013  docker exec -it step-3-fastapi-web-1 bash
+ 2014  docker compose kill
+ 2015  history
