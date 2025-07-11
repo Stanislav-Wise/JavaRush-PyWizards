@@ -1,0 +1,102 @@
+ 1900  cd M2/L19\ Poetry/
+ 1901  pip list
+ 1902  python3 -m venv .myvenv
+ 1903  source ./.myvenv/bin/activate
+ 1904  pip list
+ 1905  pip install requests
+ 1906  pip list
+ 1907  pip --version
+ 1908  pip uninstall requests
+ 1909  pip list
+ 1910  pip install requests==2.31
+ 1911  pip list
+ 1912  pip install --upgrade requests
+ 1913  pip list
+ 1914  pip freeze
+ 1915  pip freeze > requirements.txt
+ 1916  deactivate
+ 1917  python3 -m venv .myvenv1
+ 1918  source ./.myvenv1/bin/activate
+ 1919  pip list
+ 1920  pip install -r ./requirements.txt
+ 1921  pip lis
+ 1922  pip list
+ 1923  deactivate
+ 1924  source ./.myvenv/bin/activate
+ 1925  poetry --version
+ 1926  poetry init
+ 1927  cd ./new
+ 1928  poetry new
+ 1929  poetry new my_project
+ 1930  cd ..
+ 1931  pip list
+ 1932  poetry add flask
+ 1933  poetry add fastapi
+ 1934  pip list
+ 1935  deactivate
+ 1936  python3 -m venv .myvenv2
+ 1937  source ./.myvenv2/bin/activate
+ 1938  pip list
+ 1939  poetry install
+ 1940  pip list
+ 1941  poetry remove fastapi
+ 1942  pip list
+ 1943  poetry add requests@2.31.0
+ 1944  poetry remove requests
+ 1945  poetry add requests==2.31.0
+ 1946  poetry add --dev pytest
+ 1947  poetry update requests
+ 1948  poetry remove requests
+ 1949  poetry add requests@2.31.0
+ 1950  poetry update requests@2.32
+ 1951  poetry update requests
+ 1952  pip list
+ 1953  poetry show
+ 1954  pip list
+ 1955  poetry run pytest
+ 1956  poetry info
+ 1957  poetry env info
+ 1958  poetry env list
+ 1959  poetry add --link ruff
+ 1960  poetry add --linc ruff
+ 1961  poetry update --only dev
+ 1962  poetry add --group link ruff
+ 1963  poetry add --dev mypy
+ 1964  poetry add flask --group web
+ 1965  deactivate
+ 1966  cd ./new_project/
+ 1967  poetry install
+ 1968  source ./.venv/bin/activate
+ 1969  pip list
+ 1970  poetry show
+ 1971  deactivate
+ 1972  python3 -m venv ./.venv1
+ 1973  source ./.venv1/bin/activate
+ 1974  pip list
+ 1975  poetry show
+ 1976  poetry install --only main
+ 1977  poetry show
+ 1978  pip list
+ 1979  poetry show --tree
+ 1980  poetry audit
+ 1981  poetry config
+ 1982  curl -Ls https://astral.sh/uv/install.sh | sh
+ 1983  uv --version
+ 1984  deactivate
+ 1985  uv venv .venv3
+ 1986  uv pip install requests
+ 1987  source .venv3/bin/activate
+ 1988  pip list
+ 1989  uv pip list
+ 1990  uv pip install requests
+ 1991  uv pip list
+ 1992  uv pip freeze > req.txt
+ 1993  uv sync
+ 1994  deactivate
+ 1995  source .venv/bin/activate
+ 1996  uv sync
+ 1997  deactivate
+ 1998  source .venv1/bin/activate
+ 1999  uv sync
+ 2000  uv pip audit
+ 2001  history
