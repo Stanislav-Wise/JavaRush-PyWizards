@@ -1,51 +1,34 @@
--- CREATE TABLE votes (
--- 	votes_id INTEGER,
--- 	el_id INTEGER,
--- 	choice TEXT,
--- 	PRIMARY KEY (votes_id, el_id)
--- )
-
-
--- CREATE TABLE test_two (
--- 	customer_id SERIAL PRIMARY KEY,
--- 	name VARCHAR(50) NOT NULL,
--- 	city TEXT DEFAULT 'Москва',
--- 	age INTEGER CHECK (age >= 18),
--- 	status TEXT DEFAULT 'active' CHECK (status IN ('active', 'inactive'))
+-- SELECT customer_id, first_name, last_name
+-- FROM customer
+-- WHERE customer_id = (
+-- 	SELECT customer_id
+-- 	FROM payment
+-- 	GROUP BY customer_id
+-- 	ORDER BY SUM(amount) DESC
+-- 	LIMIT 1
 -- );
 
--- ALTER TABLE test_two
--- ADD COLUMN phone TEXT;
 
--- ALTER TABLE test_two
--- ADD COLUMN is_verified BOOLEAN DEFAULT FALSE NOT NULL;
+-- SELECT city_id, city
+-- FROM city
+-- WHERE city = 'Aurora';
 
--- ALTER TABLE test_two
--- DROP COLUMN phone;
+-- SELECT c.customer_id, c.first_name, c.last_name
+-- FROM customer c
+-- JOIN address a ON c.address_id = a.address_id
+-- WHERE a.city_id = (
+-- 	SELECT city_id FROM city WHERE city = 'Aurora'
+-- );
 
-
--- ALTER TABLE test_two
--- RENAME COLUMN status TO is_active;
-
-
--- ALTER TABLE test_two
--- ALTER COLUMN name TYPE TEXT;
-
--- ALTER TABLE test_two
--- ALTER COLUMN name TYPE VARCHAR(20);
-
-
--- ALTER TABLE test_two
--- ALTER COLUMN city SET DEFAULT 'Сочи';
-
--- ALTER TABLE test_two
--- ALTER COLUMN city DROP DEFAULT;
-
--- ALTER TABLE test_two
--- ADD CONSTRAINT u_city UNIQUE (city);
-
--- ALTER TABLE test_two
--- DROP CONSTRAINT u_city;
-
-ALTER TABLE test_two
-RENAME TO test_five;
+SELECT DISTINCT f.title
+FROM film f
+JOIN inventory i ON f.film_id = i.film_id
+JOIN rental r ON i.inventory_id = r.inventory_id
+WHERE r.customer_id IN (
+	SELECT c.customer_id
+	FROM customer c
+	JOIN address a ON c.address_id = a.address_id
+	WHERE a.city_id = (
+		SELECT city_id FROM city WHERE city = 'Aurora'
+	)
+);
