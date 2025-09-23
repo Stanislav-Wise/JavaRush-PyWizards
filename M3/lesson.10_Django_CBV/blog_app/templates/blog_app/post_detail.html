@@ -1,0 +1,41 @@
+{% extends 'blog_app/base.html' %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ post.title }}!</h1>
+    {% if post.image %}
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img" width="300">
+    {% endif %}
+    <p>Содержание: {{ post.content }}</p>
+    <p>Рейтинг: {{ post.rating }}</p>
+    <p><i>Автор: <a href="{% url 'author_posts' post.author.id %}">{{ post.author.name }}</a></i></p>
+
+    <hr>
+    <h3>Тэги</h3>
+    <ul>
+        {% for tag in tags %}
+        <li class="bg-primary text-white">
+            {{ tag.name }}
+        </li>
+        {% empty %}
+            <p>Тэгов нет</p>
+        {% endfor %}
+    </ul>
+
+    <hr>
+    <h3>Комментарии:</h3>
+    <ul class="list-group">
+        {% for comment in comments %}
+        <li class="list-group-item">
+
+            <p>{{ comment.text }}</p>
+            <small>Автор: {{ comment.author.name }} |<i> {{ comment.created_at }} </i></small>
+        </li>
+        {% empty %}
+            <p>Комментариев нет</p>
+        {% endfor %}
+    </ul>
+{% endblock %}

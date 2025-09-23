@@ -1,0 +1,86 @@
+>>> author = Author(name='Ann')
+>>> author.save()
+>>> author2 = Author.objects.create(name='Mary')
+>>> post = Post.objects.create(
+... title='Первый пост',
+... content='Содержание первого поста',
+... author=author
+... )
+>>> post2 = Post.objects.create(
+... title='Второй пост',
+... content='Содержание второго поста',
+... author=author2
+... )
+>>> comment = Comment.objects.create(text='Интересная статья', author=author, post=post)
+>>> comment = Comment.objects.create(text='Супер  статья', author=author2, post=post)
+>>> comment = Comment.objects.create(text='Супер', author=author2, post=post2)
+>>> comment = Comment.objects.create(text='Отлично', author=author, post=post2)
+>>> all_post = Post.objects.all()
+>>> all_post
+<QuerySet [<Post: Первый пост>, <Post: Второй пост>]>
+>>> all_comment = Comment.objects.all()
+>>> all_comment
+<QuerySet [<Comment: Comment by Ann>, <Comment: Comment by Mary>, <Comment: Comment by Mary>, <Comment: Comment by Ann>]>
+>>> super_comment = Comment.objects.filter(text='Супер')
+>>> super_comment
+<QuerySet [<Comment: Comment by Mary>]>
+>>> super_comment1 = Comment.objects.filter(text__startswith='Супер')
+>>> super_comment1
+<QuerySet [<Comment: Comment by Mary>, <Comment: Comment by Mary>]>
+>>> user = Author.objects.get(name='Ann')
+>>> user
+<Author: Ann>
+>>> post
+<Post: Первый пост>
+>>> post.author
+<Author: Ann>
+>>> post.comments.all()
+<QuerySet [<Comment: Comment by Ann>, <Comment: Comment by Mary>]>
+>>> p_c = post.comments.all()
+>>> p_c[0]
+<Comment: Comment by Ann>
+>>> p_c[0].text
+'Интересная статья'
+>>> p_c[0].author
+<Author: Ann>
+>>> comment
+<Comment: Comment by Ann>
+>>> comment.author
+<Author: Ann>
+>>> comment.post
+<Post: Второй пост>
+>>> comment.post.title
+'Второй пост'
+>>> comment.post.rating
+0
+
+>>> post = Post.objects.get(title='Первый пост')
+>>>
+>>> post
+<Post: Первый пост>
+>>> post.title
+'Первый пост'
+>>> post.content
+'Содержание первого поста'
+>>> post.rating
+0
+>>> post.rating = 5
+>>> post.save()
+
+>>> author = Author.objects.get(name='Ann')
+>>> author
+<Author: Ann>
+>>> Comment.objects.filter(author=author).update(text='Update text')
+2
+>>> Comment.objects.filter(author=author).delete()
+(2, {'blog_app.Comment': 2})
+>>> Post.objects.all().order_by('title')
+<QuerySet [<Post: Второй пост>, <Post: Первый пост>]>
+
+>>> Post.objects.all().order_by('-rating')
+<QuerySet [<Post: Первый пост>, <Post: Второй пост>]>
+>>> Post.objects.all().order_by('-rating')[0].title
+'Первый пост'
+>>> Post.objects.all()[:1]
+<QuerySet [<Post: Первый пост>]>
+>>> exit()
