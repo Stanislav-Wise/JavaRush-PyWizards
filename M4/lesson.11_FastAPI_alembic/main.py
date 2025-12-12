@@ -1,0 +1,19 @@
+import uvicorn
+from fastapi import FastAPI
+from routers.main_routers import router as main_router
+from routers.movie_routers import router as movie_router
+from routers.html_movie_routers import router as html_movie_router
+
+
+app = FastAPI(
+    title='Кинотеатр Онлайн',
+    description='Самый лучшие фльмы в онлайне у нас',
+    version='1.7.0',
+)
+app.include_router(main_router, tags=["Main"])
+app.include_router(html_movie_router, tags=["html movies"], prefix="/movies")
+app.include_router(movie_router)
+
+
+if __name__ == '__main__':
+    uvicorn.run("main:app", host="localhost", port=8000, reload=True)
